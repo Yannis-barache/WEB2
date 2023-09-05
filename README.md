@@ -34,9 +34,19 @@ pip install flask
 FLASK_APP=app.py flask run
 
 ```
+
 Puis consulter l'url suivant
 
 ```
 http://localhost:5000/
+
+```
+
+### Installer python-dotenv
+
+```bash
+
+pip install python-dotenv
+
 ```
 
