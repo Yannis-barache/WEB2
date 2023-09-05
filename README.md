@@ -12,6 +12,13 @@ virtualenv -p python3 venv
 
 ```
 
+### Activer le venv dans le shell
+```bash
+
+source venv/bin/activate
+
+```
+
 ### Installer Flask
 
 ```bash
