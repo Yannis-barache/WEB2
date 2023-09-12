@@ -1,6 +1,5 @@
 from .app import app
 from flask import render_template
-from .models import get_sample
 
 
 @app.route("/")
@@ -19,12 +18,3 @@ def page2():
         title="Page 2",
         message="Hello World !!!!!  Khalil et Yassine ont fait cette page de golmon",
         )
-
-
-@app.route("/books")
-def books():
-    return render_template(
-        "books.html",
-        title="Books",
-        books=get_sample()
-    )
