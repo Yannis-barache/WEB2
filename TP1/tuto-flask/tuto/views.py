@@ -24,7 +24,7 @@ def page2():
 @app.route("/books")
 def books():
     return render_template(
-        "books.html",
+        "livre.html",
         title="Books",
         books=get_sample()
     )
