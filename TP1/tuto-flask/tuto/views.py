@@ -9,3 +9,12 @@ def home():
         "home.html",
         title="Hello World !!!!!",
         names=["Pierre", "Paul", "Corinne"])
+
+@app.route("/page2")
+
+def page2():
+    return render_template(
+        "page2.html",
+        title="Page 2",
+        message="Hello World !!!!!  Khalil et Yassine ont fait cette page de golmon",
+        )
