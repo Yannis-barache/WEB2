@@ -9,7 +9,7 @@ def home():
     return render_template(
         "home.html",
         title="Hello World !!!!!",
-        names=["Pierre", "Paul", "Corinne"])
+        books=get_sample())
 
 @app.route("/page2")
 

@@ -1,13 +1,14 @@
-h1 {
-    color: red;
-    font-size: 50px;
-    text-align: center;
-}
-
-h1  {color: red;}
-
+h1 {color: red;}
 div.sample{
     text-align: center;
     margin-left: 25%;
     margin-right: 25%;
+}
+main{
+    margin-top: 8em;
+}
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
