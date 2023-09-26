@@ -1,6 +1,9 @@
 from .app import app
 from flask import render_template
-from .models import get_sample
+from .models import *
+from .commands import *
+from .views import *
+
 
 
 @app.route("/")
@@ -9,7 +12,7 @@ def home():
     return render_template(
         "home.html",
         title="Hello World !!!!!",
-        books=get_sample())
+        books=get_sample2())
 
 @app.route("/page2")
 
@@ -33,8 +36,8 @@ def books():
 
 @app.route("/detail/<id>")
 def detail(id):
-    books = get_sample()
-    book = books[int(id)]
+    books = get_sample2()
+    book = books[int(id)-1]
     return render_template(
         "detail.html",
         book=book)

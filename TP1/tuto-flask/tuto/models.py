@@ -1,4 +1,7 @@
+
 import yaml, os.path
+from .app import db
+
 Books = yaml.safe_load(
     open(
         os.path.join(
@@ -15,3 +18,25 @@ for book in Books:
 
 def get_sample():
     return Books[0:10]
+
+class Author(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(80), nullable=False)
+
+    def __repr__(self):
+        return "<Author (%d) %s>" % (self.id, self.name)    
+
+class Book(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    price = db.Column(db.Float, nullable=False)
+    title = db.Column(db.String(100), nullable=False)
+    url= db.Column(db.String(250), nullable=False)
+    img= db.Column(db.String(200), nullable=False)
+    idAuthor = db.Column(db.Integer, db.ForeignKey('author.id'), nullable=False)
+    author = db.relationship('Author', backref=db.backref('books', lazy='dynamic'))
+
+    def __repr__(self):
+        return "<Book (%d) %s>" % (self.id, self.title)
+    
+def get_sample2():
+    return Book.query.limit(20).all()
