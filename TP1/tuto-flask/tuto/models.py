@@ -39,4 +39,4 @@ class Book(db.Model):
         return "<Book (%d) %s>" % (self.id, self.title)
     
 def get_sample2():
-    return Book.query.limit(20).all()
+    return Book.query.all()

@@ -35,6 +35,13 @@ FLASK_APP=app.py flask run
 
 ```
 
+
+### Tout reinstaller depuis requirements.txt
+
+```bash
+pip install -r requirements.txt
+```
+
 Puis consulter l'url suivant
 
 ```
