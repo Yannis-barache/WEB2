@@ -40,3 +40,6 @@ class Book(db.Model):
     
 def get_sample2():
     return Book.query.all()
+
+def get_author(id):
+    return Author.query.filter_by(id=id).first()

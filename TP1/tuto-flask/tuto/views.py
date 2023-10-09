@@ -3,9 +3,17 @@ from flask import render_template
 from .models import *
 from .commands import *
 from .views import *
+from flask_wtf import FlaskForm
+from wtforms import StringField , HiddenField
+from wtforms. validators import DataRequired
 
 
 
+class AuthorForm ( FlaskForm ):
+    id = HiddenField ('id')
+    name = StringField ('Nom ', validators =[ DataRequired ()])
+    
+    
 @app.route("/")
 
 def home():
@@ -41,3 +49,11 @@ def detail(id):
     return render_template(
         "detail.html",
         book=book)
+    
+@app.route("/edit/author/<int:id>")
+def edit_author (id):
+    a = get_author(id)
+    f = AuthorForm(id=a.id, name=a.name)
+    return render_template (
+        "edit_author.html",
+        author=a, form=f)

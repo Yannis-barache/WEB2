@@ -3,6 +3,7 @@ from flask_bootstrap import Bootstrap5
 import os.path
 app= Flask(__name__)
 app.config['BOOTSTRAP_SERVE_LOCAL']=True
+app.config['SECRET_KEY'] = "e589ed62-9678-4a84-a17e-bf789e6cc539"
 bootstrap=Bootstrap5(app)
 
 def mkpath (p):
