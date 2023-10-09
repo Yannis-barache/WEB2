@@ -1,5 +1,5 @@
 from .app import app
-from flask import render_template
+from flask import render_template, url_for , redirect
 from .models import *
 from .commands import *
 from .views import *
@@ -54,6 +54,21 @@ def detail(id):
 def edit_author (id):
     a = get_author(id)
     f = AuthorForm(id=a.id, name=a.name)
+    return render_template (
+        "edit_author.html",
+        author=a, form=f)
+    
+@app.route("/save/author/", methods =("POST" ,))
+def save_author ():
+    a = None
+    f = AuthorForm()
+    if f.validate_on_submit():
+        id = int(f.id.data)
+        a = get_author (id)
+        a.name = f.name.data
+        db.session.commit()
+        return redirect(url_for('detail', id=a.id))
+    a = get_author (int(f.id.data ))
     return render_template (
         "edit_author.html",
         author=a, form=f)
