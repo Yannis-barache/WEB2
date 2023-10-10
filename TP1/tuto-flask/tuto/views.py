@@ -52,7 +52,11 @@ def detail(id):
         "detail.html",
         book=book)
     
+
+from flask_login import login_required
+ 
 @app.route("/edit/author/<int:id>")
+@login_required
 def edit_author (id):
     a = get_author(id)
     f = AuthorForm(id=a.id, name=a.name)
@@ -79,6 +83,7 @@ def save_author ():
 class LoginForm(FlaskForm):
     username=StringField('Username')
     password=PasswordField('Password')
+    next=HiddenField()
     
     def get_authenticated_user(self):
         user=User.query.get(self.username.data)
@@ -95,11 +100,14 @@ from flask import request
 @app.route("/login/",methods=("GET","POST"))
 def login():
     f=LoginForm()
+    if not f.is_submitted():
+        f.next.data=request.args.get("next")
     if f.validate_on_submit():
         user=f.get_authenticated_user()
         if user:
             login_user(user)
-            return redirect(url_for("home"))
+            next=f.next.data or url_for("home")
+            return redirect(next)
     return render_template("login.html",form=f)
 
 @app.route("/logout/")
