@@ -57,3 +57,9 @@ pip install python-dotenv
 
 ```
 
+### Créer la base de données 
+
+```bash
+flask loaddb tuto/data.yml
+```
+
