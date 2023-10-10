@@ -2,7 +2,7 @@ import click
 from .app import app , db
 @app.cli.command()
 @click.argument('filename')
-def loaddb(filename ):
+def loaddb(filename):
     "Creates the tables and populates them with data. "
     # création de toutes les tables
     db.create_all()
@@ -31,4 +31,5 @@ def loaddb(filename ):
                 img =b["img"] ,
                 idAuthor =a.id)
         db.session.add(o)
-    db.session.commit ()
+    db.session.commit()
+
