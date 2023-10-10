@@ -1,5 +1,6 @@
 import click
 from .app import app , db
+
 @app.cli.command()
 @click.argument('filename')
 def loaddb(filename):
@@ -33,3 +34,7 @@ def loaddb(filename):
         db.session.add(o)
     db.session.commit()
 
+@app.cli.command()
+def syncdb():
+    "Creates all missing tables. "
+    db.create_all()
