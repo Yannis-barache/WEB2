@@ -1,6 +1,7 @@
 
 import yaml, os.path
 from .app import db
+from flask_login import UserMixin
 
 Books = yaml.safe_load(
     open(
@@ -43,3 +44,16 @@ def get_sample2():
 
 def get_author(id):
     return Author.query.get(id)
+    
+# Classe pour l'authentification    
+class User(db.Model,UserMixin):
+    username = db.Column(db.String(50),primary_key =True)
+    password = db.Column(db.String(64))
+    
+    def get_id(self):
+        return self.username
+    
+    
+    
+    
+    
