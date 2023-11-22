@@ -1,8 +1,5 @@
 #!/usr/bin/php
-
 <?php
-echo "Hello World!\n";
-
 var_dump($argv); // arguments de la cli
 
 $string="Hello World!";
@@ -11,11 +8,12 @@ $float=42.42;
 $bool=true;
 $array=[1,2,3];
 $null=null;
-$request=new Request();
 
-function addInteger(integer $a, integer $b) {
+function addInteger(int $a, int $b) {
     return $a+$b;
 }
+
+echo addInteger(1,5)
 
 
 
