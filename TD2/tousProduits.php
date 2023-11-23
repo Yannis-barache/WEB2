@@ -13,8 +13,22 @@ try {
 <head>
     <meta charset="UTF-8">
     <title>TD2</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
+<header>
+    <nav>
+        <ul>
+            <li><a href="tousProduits.php">Tous les produits</a></li>
+            <?php
+            $brands = array_map(fn($p) => $p['brand'], $products);
+            $brands = array_unique($brands);
+            foreach ($brands as $brand) {
+                echo "<li><a href='tousProduits.php?brand=$brand'>$brand</a></li>";
+            }
+            ?>
+        </ul>
+    </nav>
+</header>
 <body>
 <h1>Mes produits</h1>
     <?php
@@ -35,10 +49,10 @@ try {
         echo "<h2>" . $product['title'] . "</h2>";
         echo "</td>";
         echo "<td>";
-        echo "<p>Marque: " . $product['brand'] . "</p>";
+        echo "<p>" . $product['brand'] . "</p>";
         echo "</td>";
         echo "<td>";
-        echo "<p>Catégorie: " . $product['category'] . "</p>";
+        echo "<p> " . $product['category'] . "</p>";
         echo "</td>";
         echo "<td>";
         echo "<a href='detail.php?id=" . $product['id'] . "'>Détail</a>";
