@@ -29,12 +29,19 @@ if (!empty($_GET['id'])) {
     echo "<h2>" . $product['title'] . "</h2>";
     echo "<p>Marque: " . $product['brand'] . "</p>";
     echo "<p>Catégorie: " . $product['category'] . "</p>";
+    foreach ($product['images'] as $image ){
+        echo "<img src=$image ></img>";
+    }
     echo "</div>";
 } else {
     echo "<p>Il faut un id</p>";
 }
 ?>
+<form action="tousProduits.php">
+    <input type="submit" value="Retour"></input>
+</form>
 </body>
 </html>
+
 
 
