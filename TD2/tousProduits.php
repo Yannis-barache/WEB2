@@ -15,20 +15,10 @@ try {
     <title>TD2</title>
     <link rel="stylesheet" href="css/index.css">
 </head>
-<header>
-    <nav>
-        <ul>
-            <li><a href="tousProduits.php">Tous les produits</a></li>
-            <?php
-            $brands = array_map(fn($p) => $p['brand'], $products);
-            $brands = array_unique($brands);
-            foreach ($brands as $brand) {
-                echo "<li><a href='tousProduits.php?brand=$brand'>$brand</a></li>";
-            }
-            ?>
-        </ul>
-    </nav>
-</header>
+<?php
+require_once "header.php";
+create_header();
+?>
 <body>
 <h1>Mes produits</h1>
     <?php
